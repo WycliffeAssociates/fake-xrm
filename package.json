@@ -4,8 +4,8 @@
   "description": "Starter kit for modern javascript library",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --cache --max-warnings 0 index.js \"src/**/*.js\"",
-    "test": "jest --watch --coverage"
+    "test": "jest --watch --coverage",
+    "format": "prettier-eslint throws --write --eslint-config-path ./.eslintrc.json index.js \"src/**/*.js\""
   },
   "author": "Vicky Leong",
   "license": "MIT",
@@ -13,7 +13,8 @@
     "babel-cli": "^6.26.0",
     "babel-jest": "^21.2.0",
     "babel-preset-env": "^1.6.0",
-    "eslint": "^4.8.0",
-    "jest": "^21.2.1"
+    "jest": "^21.2.1",
+    "prettier-eslint": "^8.2.0",
+    "prettier-eslint-cli": "^4.4.0"
   }
 }
