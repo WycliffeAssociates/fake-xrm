@@ -1,2 +1,2 @@
-import JSStarterKit from './JSStarterKit'
-export default JSStarterKit
+import FakeXrm from './FakeXrm'
+export default FakeXrm

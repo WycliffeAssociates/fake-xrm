@@ -1,7 +1,7 @@
 {
-  "name": "js-starter-kit",
+  "name": "fake-xrm",
   "version": "0.0.0",
-  "description": "Starter kit for modern javascript library",
+  "description": "Mocking library for Dynamics365",
   "main": "dist/index.js",
   "scripts": {
     "start": "webpack --watch",
