@@ -4,6 +4,7 @@
   "description": "Starter kit for modern javascript library",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --cache --max-warnings 0 index.js \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vicky Leong",
