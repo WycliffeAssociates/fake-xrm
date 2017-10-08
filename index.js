@@ -1,2 +1,2 @@
-import JSStarterKit from './src'
+import JSStarterKit from './src/JSStarterKit'
 export default JSStarterKit

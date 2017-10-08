@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --cache --max-warnings 0 index.js \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Vicky Leong",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^4.8.0"
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "jest": "^21.2.1"
   }
 }
