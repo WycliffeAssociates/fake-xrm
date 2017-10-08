@@ -2,10 +2,10 @@ const path = require('path')
 const webpack = require('webpack')
 
 const config = {
-  entry: './src/JSStarterKit.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'JSStarterKit.js',
+    filename: 'index.js',
   },
   module: {
     rules: [
