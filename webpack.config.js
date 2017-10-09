@@ -4,6 +4,9 @@ const webpack = require('webpack')
 const config = {
   entry: './src/index.js',
   output: {
+    // If not bundling for a library, remove library and libraryTarget
+    library: 'FakeXrm',
+    libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
   },
