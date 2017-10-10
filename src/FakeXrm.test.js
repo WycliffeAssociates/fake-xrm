@@ -1,4 +1,5 @@
 import FakeXrm from './FakeXrm'
+import OptionSetValue from './attributes/OptionSetValue'
 
 describe('FakeXrm class', () => {
   it('exists', () => {
@@ -13,20 +14,20 @@ describe('FakeXrm instance', () => {
     expect(Xrm.Page).toBeDefined()
   })
 
-  it('has a generate property', () => {
-    expect(Xrm.generate).toBeDefined()
+  it('has a _generate property', () => {
+    expect(Xrm._generate).toBeDefined()
   })
 
-  describe('generate', () => {
+  describe('_generate', () => {
     it('has booleanAttr function', () => {
-      expect(typeof Xrm.generate.booleanAttr).toEqual('function')
+      expect(typeof Xrm._generate.booleanAttr).toEqual('function')
     })
   })
 })
 
-describe('FakeXrm.generate.booleanAttr', () => {
+describe('FakeXrm._generate.booleanAttr', () => {
   const Xrm = new FakeXrm()
-  const booleanAttr = Xrm.generate.booleanAttr
+  const booleanAttr = Xrm._generate.booleanAttr
 
   it('returns a BooleanAttr', () => {
     expect(booleanAttr('wa_fakestring', false)).toEqual({
@@ -40,4 +41,18 @@ describe('FakeXrm.generate.booleanAttr', () => {
     const stored = Xrm.Page.getAttribute('wa_cakestring')
     expect(stored).toEqual(returned)
   })
+})
+
+describe('FakeXrm._generate.optionSetAttr', () => {
+  const Xrm = new FakeXrm()
+  const optionSets = [
+    new OptionSetValue('amazing anaconda', 111),
+    new OptionSetValue('bored bear', 222),
+  ]
+  const optionSetAttr = Xrm._generate.optionSetAttr('wa_fakeoptionset', optionSets)
+
+  it('returns an OptionSetAttr', () => {
+    expect(optionSetAttr.constructor.name).toEqual('OptionSetAttr')
+  })
+
 })
