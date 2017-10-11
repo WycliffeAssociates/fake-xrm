@@ -4,9 +4,9 @@
   "description": "Mocking library for Dynamics365",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack --watch",
+    "start": "NODE_PATH=src webpack --watch",
     "format": "prettier-eslint throws --write --eslint-config-path ./.eslintrc.json index.js \"src/**/*.js\"",
-    "test": "jest --watch --coverage"
+    "test": "NODE_PATH=src jest --watch --coverage"
   },
   "author": "Vicky Leong",
   "license": "MIT",

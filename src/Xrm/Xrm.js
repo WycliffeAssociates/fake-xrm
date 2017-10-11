@@ -2,7 +2,7 @@ import Page from './Page'
 import BooleanAttr from './attributes/BooleanAttr'
 import OptionSetAttr from './attributes/OptionSetAttr'
 
-export default class FakeXrm {
+export default class Xrm {
   constructor(config) {
     this.Page = new Page(config && config.page)
     this._generate = {
