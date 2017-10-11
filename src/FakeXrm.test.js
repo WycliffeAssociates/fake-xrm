@@ -1,5 +1,6 @@
 import FakeXrm from './FakeXrm'
 import OptionSetValue from './attributes/OptionSetValue'
+import Page from './Page'
 
 describe('FakeXrm class', () => {
   it('exists', () => {
@@ -11,6 +12,16 @@ describe('FakeXrm instance', () => {
   it('has a Page property', () => {
     const Xrm = new FakeXrm()
     expect(Xrm.Page).toBeDefined()
+  })
+
+  it('initializes Page with the passed-config', () => {
+    const Xrm = new FakeXrm({ page: { data: 'fake data' }})
+    expect(Xrm.Page).toEqual(new Page({ data: 'fake data' }))
+  })
+
+  it('initializes Page without config if there\'s none', () => {
+    const Xrm = new FakeXrm()
+    expect(Xrm.Page).toEqual(new Page())
   })
 })
 

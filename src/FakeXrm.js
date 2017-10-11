@@ -5,7 +5,6 @@ import OptionSetAttr from './attributes/OptionSetAttr'
 export default class FakeXrm {
   constructor(config) {
     this.Page = new Page(config && config.page)
-    this._clientUrl = (config && config.clientUrl) || 'https://fakexrm.crm.dynamics.com'
     this._generate = {
       booleanAttr: this._generateBooleanAttr.bind(this),
       optionSetAttr: this._generateOptionSetAttr.bind(this),

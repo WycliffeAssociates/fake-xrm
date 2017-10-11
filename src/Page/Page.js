@@ -1,7 +1,7 @@
 export default class Page {
   constructor(config) {
-    this.context = undefined
-    this.data = undefined
+    this.context = (config && config.context) || {}
+    this.data = (config && config.data) || {}
     this._attributes = (config && config.attributes) || []
     this._controls = (config && config.controls) || []
   }
