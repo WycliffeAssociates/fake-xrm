@@ -8,20 +8,16 @@ describe('FakeXrm class', () => {
 })
 
 describe('FakeXrm instance', () => {
-  const Xrm = new FakeXrm()
-
   it('has a Page property', () => {
+    const Xrm = new FakeXrm()
     expect(Xrm.Page).toBeDefined()
   })
+})
 
-  it('has a _generate property', () => {
-    expect(Xrm._generate).toBeDefined()
-  })
-
-  describe('_generate', () => {
-    it('has booleanAttr function', () => {
-      expect(typeof Xrm._generate.booleanAttr).toEqual('function')
-    })
+describe('_generate', () => {
+  it('has booleanAttr function', () => {
+    const Xrm = new FakeXrm()
+    expect(typeof Xrm._generate.booleanAttr).toEqual('function')
   })
 })
 
