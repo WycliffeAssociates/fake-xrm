@@ -1,4 +1,4 @@
-import Collection from 'collections/Collection'
+import Collection from 'Xrm/collections/Collection'
 
 export default class Ui {
   constructor(config = {}) {

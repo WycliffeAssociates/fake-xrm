@@ -1,24 +1,33 @@
 import Entity from './Entity'
+import Collection from 'Xrm/collections/Collection'
 
-describe('Entity', () => {
+describe('Entity properties and methods', () => {
   it('has attributes property', () => {
     const entity = new Entity()
     expect(entity.hasOwnProperty('attributes')).toBe(true)
   })
 
-  it('sets attributes based on config', () => {
-    const entity = new Entity({ attributes: 'fake attributes' })
-    expect(entity.attributes).toEqual('fake attributes')
-  })
-
-  it('defaults attributes to an empty array', () => {
-    const entity = new Entity()
-    expect(entity.attributes).toEqual([])
-  })
-
   it('has addOnSave function', () => {
     const entity = new Entity()
     expect(typeof entity.addOnSave).toEqual('function')
+  })
+})
+
+describe('Initializing Entity', () => {
+  it('initializes attributes okay with config.attributes', () => {
+    const entity = new Entity({
+      attributes: {
+        list: [1]
+      }
+    })
+    const attributes = new Collection({ list: [1] })
+    expect(JSON.stringify(entity.attributes)).toEqual(JSON.stringify(attributes))
+  })
+
+  it('initializes attributes okay without passed-in config', () => {
+    const entity = new Entity()
+    const attributes = new Collection()
+    expect(JSON.stringify(entity.attributes)).toEqual(JSON.stringify(attributes))
   })
 })
 

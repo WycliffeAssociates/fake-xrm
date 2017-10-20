@@ -1,15 +1,27 @@
 export default class Control {
-  constructor(config) {
-    this._name = (config && config.name) || ''
-    this._label = (config && config.label) || ''
-    this._disabled = (config && config.disabled) === true
-    this._visible = (config && config.visible) !== false
-    this.getName = this.getName.bind(this)
-    this.getLabel = this.getLabel.bind(this)
-    this.getDisabled = this.getDisabled.bind(this)
-    this.setDisabled = this.setDisabled.bind(this)
-    this.getVisible = this.getVisible.bind(this)
-    this.setVisible = this.setVisible.bind(this)
+  constructor(config = {}) {
+    this._name = config.name || ''
+    this._label = config.label || ''
+    this._disabled = config.disabled === true
+    this._visible = config.visible !== false
+    this._attribute = config.attribute
+    this.getAttribute = this.getAttribute.bind(this)
+  }
+
+  getAttribute() {
+    return this._attribute
+  }
+
+  getControlType() {
+    throw Error('not implemented')
+  }
+
+  getParent() {
+    throw Error('not implemented')
+  }
+
+  getValue() {
+    throw Error('not implemented')
   }
 
   getName() {
@@ -18,6 +30,10 @@ export default class Control {
 
   getLabel() {
     return this._label
+  }
+
+  setLabel(text) {
+    return this._label = text
   }
 
   getDisabled() {

@@ -1,11 +1,17 @@
 export default class Attribute {
-  constructor(config) {
-    this._value = (config && config.value) || null
+  constructor(config = {}) {
+    this._value = config.value || null
     this._originalValue = this._value
-    this._onChangeHandlers = (config && config.onChangeHandlers) || []
+    this._onChangeHandlers = config.onChangeHandlers || []
+    this._name = config.name || ''
+    this.controls = config.controls || []
     this.getValue = this.getValue.bind(this)
     this.setValue = this.setValue.bind(this)
     this.getIsDirty = this.getIsDirty.bind(this)
+  }
+
+  getName() {
+    return this._name
   }
 
   getValue() {
@@ -26,5 +32,9 @@ export default class Attribute {
 
   removeOnChange(handler) {
     this._onChangeHandlers = this._onChangeHandlers.filter(h => h !== handler)
+  }
+
+  fireOnChange() {
+    this._onChangeHandlers.forEach(h => h())
   }
 }

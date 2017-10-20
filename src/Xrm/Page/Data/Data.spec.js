@@ -1,4 +1,5 @@
 import Data from './Data'
+import Entity from './Entity'
 
 describe('Data', () => {
   it('exists', () => {
@@ -13,12 +14,15 @@ describe('Data instance', () => {
   })
 
   it('takes entity property from config', () => {
-    const data = new Data({ entity: 'fake entity' })
-    expect(data.entity).toEqual('fake entity')
+    const data = new Data({ entity: {
+      attributes: [1]
+    }})
+    const entity = new Entity({ attributes: [1] })
+    expect(JSON.stringify(data.entity)).toEqual(JSON.stringify(entity))
   })
 
-  it('defaults entity to an empty object', () => {
+  it('defaults entity to a new Entity object', () => {
     const data = new Data()
-    expect(data.entity).toEqual({})
+    expect(data.entity.constructor.name).toEqual('Entity')
   })
 })

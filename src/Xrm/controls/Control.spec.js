@@ -1,35 +1,52 @@
 import Control from './Control'
 
-describe('Control', () => {
-  it('has getName method', () => {
-    const control = new Control()
-    expect(typeof control.getName).toEqual('function')
-  })
-
-  it('has getLabel method', () => {
-    const control = new Control()
-    expect(typeof control.getLabel).toEqual('function')
-  })
-
-  it('has getVisible method', () => {
-    const control = new Control()
-    expect(typeof control.getVisible).toEqual('function')
-  })
-
-  it('has setVisible method', () => {
-    const control = new Control()
-    expect(typeof control.setVisible).toEqual('function')
-  })
+describe('Control properties and methods', () => {
+  const control = new Control()
 
   it('has getDisabled method', () => {
-    const control = new Control()
     expect(typeof control.getDisabled).toEqual('function')
   })
 
   it('has setDisabled method', () => {
-    const control = new Control()
     expect(typeof control.setDisabled).toEqual('function')
   })
+
+  it('has getAttribute method', () => {
+    expect(typeof control.getAttribute).toEqual('function')
+  })
+
+  it('has getControlType', () => {
+    expect(typeof control.getControlType).toEqual('function')
+  })
+
+  it('has getName method', () => {
+    expect(typeof control.getName).toEqual('function')
+  })
+
+  it('has getParent method', () => {
+    expect(typeof control.getParent).toEqual('function')
+  })
+
+  it('has getValue method', () => {
+    expect(typeof control.getValue).toEqual('function')
+  })
+
+  it('has getLabel method', () => {
+    expect(typeof control.getLabel).toEqual('function')
+  })
+
+  it('has setLabel method', () => {
+    expect(typeof control.setLabel).toEqual('function')
+  })
+
+  it('has getVisible method', () => {
+    expect(typeof control.getVisible).toEqual('function')
+  })
+
+  it('has setVisible method', () => {
+    expect(typeof control.setVisible).toEqual('function')
+  })
+
 })
 
 describe('Control.getName', () => {
@@ -53,6 +70,15 @@ describe('Control.getLabel', () => {
   it('returns an empty string by default', () => {
     const control = new Control()
     expect(control.getLabel()).toEqual('')
+  })
+})
+
+describe('Control.setLabel', () => {
+  it('changes control label', () => {
+    const control = new Control({ label: 'fake label' })
+    expect(control.getLabel()).toEqual('fake label')
+    control.setLabel('real label')
+    expect(control.getLabel()).toEqual('real label')
   })
 })
 
@@ -95,5 +121,26 @@ describe('Control.setVisible', () => {
     expect(control.getVisible()).toEqual(true)
     control.setVisible(false)
     expect(control.getVisible()).toEqual(false)
+  })
+})
+
+describe('Control.getControlType', () => {
+  it('is not implemented yet', () => {
+    const control = new Control()
+    expect(() => control.getControlType()).toThrow()
+  })
+})
+
+describe('Control.getParent', () => {
+  it('is not implemented yet', () => {
+    const control = new Control()
+    expect(() => control.getParent()).toThrow()
+  })
+})
+
+describe('Control.getValue', () => {
+  it('is not implemented yet', () => {
+    const control = new Control()
+    expect(() => control.getValue()).toThrow()
   })
 })

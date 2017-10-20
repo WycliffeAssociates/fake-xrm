@@ -1,11 +1,11 @@
 import Attribute from './Attribute'
 
 describe('Attribute', () => {
-  it('initializes okay without config', () => {
+  it('initializes without config', () => {
     new Attribute()
   })
 
-  it('initializes okay with config', () => {
+  it('initializes with config', () => {
     new Attribute({ value: 'test value' })
   })
 
@@ -25,33 +25,95 @@ describe('Attribute', () => {
     const attribute = new Attribute()
     expect(attribute._value).toBe(null)
   })
+})
 
-  it('has getValue function', () => {
-    const attribute = new Attribute()
-    expect(typeof attribute.getValue).toBe('function')
+describe('Attribute properties and methods', () => {
+  const attribute = new Attribute()
+
+  it('has controls property', () => {
+    expect(attribute.hasOwnProperty('controls')).toBe(true)
   })
 
-  it('has setValue function', () => {
-    const attribute = new Attribute()
-    expect(typeof attribute.setValue).toBe('function')
+  xit('has getAttributeType function', () => {
+    expect(typeof attribute.getAttributeType).toBe('function')
   })
 
-  it('has getIsDirty function', () => {
-    const attribute = new Attribute()
+  xit('has getFormat function', () => {
+    expect(typeof attribute.getFormat).toBe('function')
+  })
+
+  xit('has getIsDirty function', () => {
     expect(typeof attribute.getIsDirty).toBe('function')
   })
 
+  xit('has getIsPartyList function', () => {
+    expect(typeof attribute.getIsPartyList).toBe('function')
+  })
+
+  xit('has getMaxLength function', () => {
+    expect(typeof attribute.getMaxLength).toBe('function')
+  })
+
+  it('has getName function', () => {
+    expect(typeof attribute.getName).toBe('function')
+  })
+
+  xit('has getParent function', () => {
+    expect(typeof attribute.getParent).toBe('function')
+  })
+
+  xit('has getUserPrivilege function', () => {
+    expect(typeof attribute.getUserPrivilege).toBe('function')
+  })
+
   it('has addOnChange function', () => {
-    const attribute = new Attribute()
     expect(typeof attribute.addOnChange).toBe('function')
   })
 
   it('has removeOnChange function', () => {
-    const attribute = new Attribute()
     expect(typeof attribute.removeOnChange).toBe('function')
+  })
+
+  it('has fireOnChange function', () => {
+    expect(typeof attribute.fireOnChange).toBe('function')
+  })
+
+  xit('has setRequiredLevel function', () => {
+    expect(typeof attribute.setRequiredLevel).toBe('function')
+  })
+
+  xit('has getRequiredLevel function', () => {
+    expect(typeof attribute.getRequiredLevel).toBe('function')
+  })
+
+  xit('has setSubmitMode function', () => {
+    expect(typeof attribute.setSubmitMode).toBe('function')
+  })
+
+  xit('has getSubmitMode function', () => {
+    expect(typeof attribute.getSubmitMode).toBe('function')
+  })
+
+  xit('has getValue function', () => {
+    expect(typeof attribute.getValue).toBe('function')
+  })
+
+  xit('has setValue function', () => {
+    expect(typeof attribute.setValue).toBe('function')
   })
 })
 
+describe('Attribute.getName', () => {
+  it('returns the name of the attribute', () => {
+    const attribute = new Attribute({ name: 'single attribute' })
+    expect(attribute.getName()).toBe('single attribute')
+  })
+
+  it('returns an empty string if there\'s no name', () => {
+    const attribute = new Attribute()
+    expect(attribute.getName()).toBe('')
+  })
+})
 
 describe('Attribute.getValue', () => {
   it('returns whatever\'s in _value', () => {
@@ -114,5 +176,24 @@ describe('Attribute.removeOnChange', () => {
 
     const match = attribute._onChangeHandlers.filter(h => h === testFunction)
     expect(match.length).toBe(0)
+  })
+})
+
+describe('Attribute.fireOnChange', () => {
+  it('calls all the function in _onChangeHandlers', () => {
+    const testFunctionOne = jest.fn()
+    const attribute = new Attribute({
+      onChangeHandlers: [ testFunctionOne ],
+    })
+
+    attribute.fireOnChange()
+    expect(testFunctionOne.mock.calls.length).toBe(1)
+
+    const testFunctionTwo = jest.fn()
+    attribute.addOnChange(testFunctionTwo)
+
+    attribute.fireOnChange()
+    expect(testFunctionOne.mock.calls.length).toBe(2)
+    expect(testFunctionTwo.mock.calls.length).toBe(1)
   })
 })

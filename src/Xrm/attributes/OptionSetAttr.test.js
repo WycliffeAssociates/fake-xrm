@@ -7,12 +7,8 @@ const optionSets = [
   new OptionSetValue('curious cat', 345),
 ]
 
-describe('OptionSetAttr', () => {
-  const optionSetAttr = new OptionSetAttr('wa_fakeoptionset', optionSets)
-
-  it('takes a name and a list of optionset', () => {
-    expect(new OptionSetAttr('wa_fakeoptionset', optionSets))
-  })
+describe('OptionSetAttr properties and methods', () => {
+  const optionSetAttr = new OptionSetAttr()
 
   it('has getOptions function', () => {
     expect(typeof optionSetAttr.getOptions).toEqual('function')
@@ -34,13 +30,19 @@ describe('OptionSetAttr.getOptions', () => {
   })
 
   it('returns all the options if there are any', () => {
-    const optionSetAttr = new OptionSetAttr('dumb donkey', optionSets)
+    const optionSetAttr = new OptionSetAttr({
+      name: 'dumb donkey',
+      options: optionSets
+    })
     expect(optionSetAttr.getOptions()).toEqual(optionSets)
   })
 })
 
 describe('OptionSetAttr.getOption', () => {
-  const optionSetAttr = new OptionSetAttr('wa_fakeoptionset', optionSets)
+  const optionSetAttr = new OptionSetAttr({
+    name: 'wa_fakeoptionset',
+    options: optionSets
+  })
 
   it('returns null if there\'s no match', () => {
     expect(optionSetAttr.getOption()).toBe(null)
@@ -60,7 +62,10 @@ describe('OptionSetAttr.getOption', () => {
 })
 
 describe('OptionSetAttr.getValue', () => {
-  const optionSetAttr = new OptionSetAttr('wa_fakeoptionset', optionSets)
+  const optionSetAttr = new OptionSetAttr({
+    name: 'wa_fakeoptionset',
+    options: optionSets
+  })
 
   it('returns null if there\'s no selected option', () => {
     expect(optionSetAttr.getValue()).toBe(null)
@@ -73,7 +78,10 @@ describe('OptionSetAttr.getValue', () => {
 })
 
 describe('OptionSetAttr._setSelectedIndex', () => {
-  const optionSetAttr = new OptionSetAttr('wa_fakeoptionset', optionSets)
+  const optionSetAttr = new OptionSetAttr({
+    name: 'wa_fakeoptionset',
+    options: optionSets
+  })
 
   it('throws an error if number is out of range', () => {
     expect(() => {

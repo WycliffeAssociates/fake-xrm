@@ -1,8 +1,11 @@
-export default class OptionSetAttr {
-  constructor(name, options) {
-    this._name = name
-    this._options = options || []
+import Attribute from './Attribute'
+
+export default class OptionSetAttr extends Attribute{
+  constructor(config = {}) {
+    super(config)
+    this._options = config.options || []
     this._selectedIndex = null
+    this.getOptions = this.getOptions.bind(this)
   }
 
   getOptions() {
